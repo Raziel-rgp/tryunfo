@@ -25,14 +25,28 @@ class App extends React.Component {
         cardAttr1, cardAttr2, cardAttr3,
         cardImage, cardRare,
       } = this.state;
-      const condition1 = cardName.length > 0
+      const limitAttr1 = 90;
+      const limitAttr2 = 90;
+      const limitAttr3 = 90;
+      const somAttrs = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+      console.log(somAttrs);
+      const limitAttr = 210;
+      const condButton1 = cardName.length > 0
         && cardDescription.length > 0
         && cardImage.length > 0
         && cardRare.length > 0
         && cardAttr1.length > 0
         && cardAttr2.length > 0
-        && cardAttr3.length > 0;
-      if (condition1) {
+        && cardAttr3.length > 0
+        && cardAttr1 >= 0
+        && cardAttr2 >= 0
+        && cardAttr3 >= 0;
+      const condButton2 = cardAttr1 <= limitAttr1
+        && cardAttr2 <= limitAttr2
+        && cardAttr3 <= limitAttr3;
+      const condButton3 = somAttrs <= limitAttr;
+      const condButtonComp = condButton1 && condButton2 && condButton3;
+      if (condButtonComp) {
         this.setState({ isSaveButtonDisabled: false });
       } else {
         this.setState({ isSaveButtonDisabled: true });
