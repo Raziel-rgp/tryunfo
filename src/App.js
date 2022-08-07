@@ -65,7 +65,6 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          buttonFunc={ this.buttonFunc }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
           isSaveButtonDisabled={ isSaveButtonDisabled }
