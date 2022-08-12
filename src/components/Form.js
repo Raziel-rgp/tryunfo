@@ -14,7 +14,7 @@ export default class Form extends Component {
       cardTrunfo,
       onInputChange,
       isSaveButtonDisabled,
-      onSaveButtonClick } = this.props;
+      onClickSaveButton } = this.props;
     return (
       <form className="form" id="formId">
         <label htmlFor="formId">
@@ -126,7 +126,7 @@ export default class Form extends Component {
           disabled={ isSaveButtonDisabled }
           data-testid="save-button"
           type="button"
-          onClick={ onSaveButtonClick }
+          onClick={ onClickSaveButton }
         >
           SALVE
         </button>
@@ -146,5 +146,5 @@ Form.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  onClickSaveButton: PropTypes.func.isRequired,
 };
