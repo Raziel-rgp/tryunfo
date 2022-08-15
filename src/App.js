@@ -57,7 +57,7 @@ class App extends React.Component {
 
   // ajuda do Luiz
 
-  onClickSaveButton = (event) => {
+  onSaveButtonClick = (event) => {
     event.preventDefault();
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
