@@ -122,7 +122,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
-          onClickSaveButton={ this.onClickSaveButton }
+          onSaveButtonClick={ this.onSaveButtonClick }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           hasTrunfo={ hasTrunfo }
         />
