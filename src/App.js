@@ -14,6 +14,7 @@ class App extends React.Component {
     cardTrunfo: false,
     isSaveButtonDisabled: true,
     savedCards: [],
+    hasTrunfo: false,
   }
 
   onInputChange = ({ target }) => {
@@ -53,6 +54,7 @@ class App extends React.Component {
       }
     });
   }
+
   // ajuda do Luiz
 
   onClickSaveButton = (event) => {
@@ -105,7 +107,8 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      savedCards } = this.state;
+      savedCards,
+      hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -121,6 +124,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onClickSaveButton={ this.onClickSaveButton }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          hasTrunfo={ hasTrunfo }
         />
         <Card { ...this.state } onInputChange={ this.onInputChange } />
         { savedCards.map((carta, index) => (<Card
