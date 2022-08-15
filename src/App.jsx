@@ -94,7 +94,19 @@ class App extends React.Component {
         isSaveButtonDisabled: true,
         hasTrunfo: varHasTobeTrue,
       });
+      console.log(savedCards);
     });
+  }
+
+  deleteButton = (key) => {
+    const { savedCards } = this.state;
+    savedCards.forEach((element) => {
+      if (element.cardTrunfo) {
+        this.setState({ hasTrunfo: false });
+      }
+    });
+    savedCards.splice(key, 1);
+    this.setState({ savedCards });
   }
 
   render() {
@@ -127,17 +139,28 @@ class App extends React.Component {
           hasTrunfo={ hasTrunfo }
         />
         <Card { ...this.state } onInputChange={ this.onInputChange } />
-        { savedCards.map((carta, index) => (<Card
-          key={ index }
-          cardName={ carta.cardName }
-          cardDescription={ carta.cardDescription }
-          cardAttr1={ carta.cardAttr1 }
-          cardAttr2={ carta.cardAttr2 }
-          cardAttr3={ carta.cardAttr3 }
-          cardImage={ carta.cardImage }
-          cardRare={ carta.cardRare }
-          cardTrunfo={ carta.cardTrunfo }
-        />)) }
+        { savedCards.map((carta, index) => (
+          <div key={ index } id={ index }>
+            <Card
+              key={ index }
+              cardName={ carta.cardName }
+              cardDescription={ carta.cardDescription }
+              cardAttr1={ carta.cardAttr1 }
+              cardAttr2={ carta.cardAttr2 }
+              cardAttr3={ carta.cardAttr3 }
+              cardImage={ carta.cardImage }
+              cardRare={ carta.cardRare }
+              cardTrunfo={ carta.cardTrunfo }
+            />
+            <button
+              data-testid="delete-button"
+              type="button"
+              onClick={ () => this.deleteButton(index) }
+            >
+              EXCLUIR
+            </button>
+          </div>
+        )) }
       </div>
     );
   }
