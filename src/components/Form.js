@@ -113,7 +113,7 @@ export default class Form extends Component {
         </label>
         <label htmlFor="formId">
           <br />
-          SuperTrunfo
+          Super Trunfo
           { hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
             type="checkbox"
             name="cardTrunfo"
