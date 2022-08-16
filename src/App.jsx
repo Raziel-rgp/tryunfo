@@ -77,6 +77,12 @@ class App extends React.Component {
     if (cardTrunfo) {
       varHasTobeTrue = true;
     }
+    if (savedCards.length > 0) {
+      const elemento = savedCards.find((element) => element.cardTrunfo === true);
+      if (elemento) {
+        varHasTobeTrue = true;
+      }
+    }
     const cardSaved = savedCards;
     cardSaved.push(nomeAleatorio);
     this.setState({
@@ -94,17 +100,11 @@ class App extends React.Component {
         isSaveButtonDisabled: true,
         hasTrunfo: varHasTobeTrue,
       });
-      console.log(savedCards);
     });
   }
 
   deleteButton = (key) => {
     const { savedCards } = this.state;
-    savedCards.forEach((element) => {
-      if (element.cardTrunfo) {
-        this.setState({ hasTrunfo: false });
-      }
-    });
     savedCards.splice(key, 1);
     this.setState({ savedCards });
   }
