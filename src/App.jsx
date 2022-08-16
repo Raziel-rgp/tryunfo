@@ -157,7 +157,7 @@ class App extends React.Component {
               type="button"
               onClick={ () => this.deleteButton(index) }
             >
-              EXCLUIR
+              Excluir
             </button>
           </div>
         )) }
