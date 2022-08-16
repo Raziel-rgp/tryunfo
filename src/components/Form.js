@@ -15,7 +15,9 @@ export default class Form extends Component {
       onInputChange,
       isSaveButtonDisabled,
       onSaveButtonClick,
-      hasTrunfo } = this.props;
+      hasTrunfo,
+      filter,
+      onChangeNameFilter } = this.props;
     return (
       <form className="form" id="formId">
         <label htmlFor="formId">
@@ -131,6 +133,44 @@ export default class Form extends Component {
         >
           SALVE
         </button>
+        <label htmlFor="formId">
+          <br />
+          Filtro de Busca:
+          <br />
+          <input
+            data-testid="name-filter"
+            type="text"
+            name="filter"
+            value={ filter }
+            onChange={ onChangeNameFilter }
+          />
+        </label>
+        <label htmlFor="formId">
+          <br />
+          selecione
+          <br />
+          <select
+            value={ cardRare }
+            name="cardRare"
+            onChange={ onChangeNameFilter }
+            data-testid="rare-input"
+          >
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
+        </label>
+        <label htmlFor="formId">
+          <br />
+          Super Trunfo
+          { hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
+            type="checkbox"
+            name="cardTrunfo"
+            data-testid="trunfo-input"
+            checked={ cardTrunfo }
+            onChange={ onChangeNameFilter }
+          /> }
+        </label>
       </form>
     );
   }
@@ -149,4 +189,6 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
+  filter: PropTypes.string.isRequired,
+  onChangeNameFilter: PropTypes.func.isRequired,
 };
