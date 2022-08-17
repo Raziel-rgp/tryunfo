@@ -122,9 +122,16 @@ class App extends React.Component {
   }
 
   onChangeNameFilter = (event) => {
-    const { value, checked } = event.target;
+    const { value/* , checked */ } = event.target;
     this.onInputChange(event);
     nameFil = value;
+    // boolFil = checked;
+    this.forceUpdate();
+  }
+
+  onChangeBoolFil = (event) => {
+    const { checked } = event.target;
+    this.onInputChange(event);
     boolFil = checked;
     this.forceUpdate();
   }
@@ -164,6 +171,7 @@ class App extends React.Component {
           onChangeNameFilter={ this.onChangeNameFilter }
           filterBool={ filterBool }
           cardRareFilter={ cardRareFilter }
+          onChangeBoolFil={ this.onChangeBoolFil }
         />
         <Card { ...this.state } onInputChange={ this.onInputChange } />
         { savedCards

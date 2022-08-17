@@ -19,7 +19,8 @@ export default class Form extends Component {
       filter,
       filterBool,
       cardRareFilter,
-      onChangeNameFilter } = this.props;
+      onChangeNameFilter,
+      onChangeBoolFil } = this.props;
     return (
       <form className="form" id="formId">
         <label htmlFor="formId">
@@ -145,6 +146,7 @@ export default class Form extends Component {
             name="filter"
             value={ filter }
             onChange={ onChangeNameFilter }
+            disabled={ filterBool }
           />
         </label>
         <label htmlFor="formId">
@@ -156,6 +158,7 @@ export default class Form extends Component {
             name="cardRareFilter"
             onChange={ onChangeNameFilter }
             data-testid="rare-filter"
+            disabled={ filterBool }
           >
             <option value="todas">todas</option>
             <option value="normal">normal</option>
@@ -171,7 +174,7 @@ export default class Form extends Component {
             name="filterBool"
             data-testid="trunfo-filter"
             checked={ filterBool }
-            onChange={ onChangeNameFilter }
+            onChange={ onChangeBoolFil }
           />
         </label>
       </form>
@@ -196,4 +199,5 @@ Form.propTypes = {
   onChangeNameFilter: PropTypes.func.isRequired,
   filterBool: PropTypes.bool.isRequired,
   cardRareFilter: PropTypes.string.isRequired,
+  onChangeBoolFil: PropTypes.func.isRequired,
 };
