@@ -17,6 +17,8 @@ export default class Form extends Component {
       onSaveButtonClick,
       hasTrunfo,
       filter,
+      filterBool,
+      cardRareFilter,
       onChangeNameFilter } = this.props;
     return (
       <form className="form" id="formId">
@@ -150,11 +152,12 @@ export default class Form extends Component {
           selecione
           <br />
           <select
-            value={ cardRare }
-            name="cardRare"
+            value={ cardRareFilter }
+            name="cardRareFilter"
             onChange={ onChangeNameFilter }
-            data-testid="rare-input"
+            data-testid="rare-filter"
           >
+            <option value="todas">todas</option>
             <option value="normal">normal</option>
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
@@ -163,13 +166,13 @@ export default class Form extends Component {
         <label htmlFor="formId">
           <br />
           Super Trunfo
-          { hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
+          <input
             type="checkbox"
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
+            name="filterBool"
+            data-testid="trunfo-filter"
+            checked={ filterBool }
             onChange={ onChangeNameFilter }
-          /> }
+          />
         </label>
       </form>
     );
@@ -191,4 +194,6 @@ Form.propTypes = {
   hasTrunfo: PropTypes.bool.isRequired,
   filter: PropTypes.string.isRequired,
   onChangeNameFilter: PropTypes.func.isRequired,
+  filterBool: PropTypes.bool.isRequired,
+  cardRareFilter: PropTypes.string.isRequired,
 };

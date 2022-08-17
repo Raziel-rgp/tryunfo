@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 
-let nameFil = '';
+let nameFil = 'todas';
 let boolFil = false;
 
 class App extends React.Component {
@@ -19,6 +19,9 @@ class App extends React.Component {
     savedCards: [],
     hasTrunfo: false,
     filter: '',
+    cardRareFilter: '',
+    filterBool: false,
+    allCard: 'todas',
   }
 
   onInputChange = ({ target }) => {
@@ -65,7 +68,7 @@ class App extends React.Component {
     event.preventDefault();
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, savedCards,
+      cardImage, cardRare, cardTrunfo, savedCards, allCard,
     } = this.state;
     const nomeAleatorio = {
       cardName,
@@ -76,6 +79,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      allCard,
     };
     let varHasTobeTrue = false;
     if (cardTrunfo) {
@@ -137,7 +141,9 @@ class App extends React.Component {
       isSaveButtonDisabled,
       savedCards,
       hasTrunfo,
-      filter } = this.state;
+      filter,
+      cardRareFilter,
+      filterBool } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -156,11 +162,13 @@ class App extends React.Component {
           hasTrunfo={ hasTrunfo }
           filter={ filter }
           onChangeNameFilter={ this.onChangeNameFilter }
+          filterBool={ filterBool }
+          cardRareFilter={ cardRareFilter }
         />
         <Card { ...this.state } onInputChange={ this.onInputChange } />
         { savedCards
           .filter((carta) => (!nameFil || carta.cardName.includes(nameFil)
-          || carta.cardRare === nameFil)
+          || carta.cardRare === nameFil || carta.allCard === nameFil)
           && (!boolFil || card.cardTrunfo))
           .map((carta, index) => (
             <div key={ index } id={ index }>
@@ -174,6 +182,7 @@ class App extends React.Component {
                 cardImage={ carta.cardImage }
                 cardRare={ carta.cardRare }
                 cardTrunfo={ carta.cardTrunfo }
+                allCard={ carta.allCard }
               />
               <button
                 data-testid="delete-button"
