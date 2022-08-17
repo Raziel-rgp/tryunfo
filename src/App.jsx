@@ -169,7 +169,7 @@ class App extends React.Component {
         { savedCards
           .filter((carta) => (!nameFil || carta.cardName.includes(nameFil)
           || carta.cardRare === nameFil || carta.allCard === nameFil)
-          && (!boolFil || card.cardTrunfo))
+          && (!boolFil || carta.cardTrunfo))
           .map((carta, index) => (
             <div key={ index } id={ index }>
               <Card
